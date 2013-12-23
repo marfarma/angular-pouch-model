@@ -1,0 +1,1 @@
+angular.module('marfarma.angular-pouch-model', []);

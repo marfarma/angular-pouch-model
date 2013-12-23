@@ -1,0 +1,25 @@
+{
+  "name": "angular-pouch-model",
+  "version": "0.0.0",
+  "authors": [
+    "Pauli Price <pauli.price@gmail.com>"
+  ],
+  "description": "object persistance layer for angularjs apps using pouchdb.  Uses promises and is $digest aware.",
+  "main": "model.js",
+  "keywords": [
+    "pouchdb",
+    "angularjs"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.0"
+  }
+}
