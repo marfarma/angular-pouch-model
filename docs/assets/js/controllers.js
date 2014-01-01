@@ -1,15 +1,12 @@
 'use strict';
 
 function NavbarCtrl($scope, $timeout) {
-    $scope.statusCluster = {};
-    $scope.configureServerUrl = false;
+    //$scope.statusCluster = {};
+    //$scope.configureServerUrl = false;
 
     var items = $scope.items = [
-        {title: 'Dashboard', link: 'dashboard'},
-        {title: 'Search', link: 'search'},
-        {title: 'Queries', link: 'query'},
-        {title: 'Graphs', link: 'graph'},
-        {title: 'About', link: 'about'}
+        {title: 'README', link: '/angular-pouch-model/README'},
+        {title: 'About', link: '/angular-pouch-model/about'}
     ];
 
     this.select = $scope.select = function (item) {
@@ -27,9 +24,9 @@ function NavbarCtrl($scope, $timeout) {
         });
     };
 
-    $scope.changeServerUrl = function () {
-        return false;
-    };
+    //$scope.changeServerUrl = function () {
+    //    return false;
+    //};
 
 }
 NavbarCtrl.$inject = ['$scope', '$timeout'];
