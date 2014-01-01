@@ -1,4 +1,4 @@
-[Read Me in docs directory](/viewdocs/readme)
+[Read Me in docs directory](/angular-pouch-model/readme)
 
 
 > Written with [StackEdit](https://stackedit.io/).
