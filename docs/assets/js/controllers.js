@@ -5,8 +5,8 @@ function NavbarCtrl($scope, $timeout) {
     //$scope.configureServerUrl = false;
 
     var items = $scope.items = [
-        {title: 'README', link: 'angular-pouch-model/README'},
-        {title: 'About', link: 'angular-pouch-model/about'}
+        {title: 'README', link: 'README'},
+        {title: 'About', link: 'about'}
     ];
 
     this.select = $scope.select = function (item) {
