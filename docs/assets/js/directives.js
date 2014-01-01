@@ -15,7 +15,7 @@ angular.module('myApp.directives', []).
                 transclude: true,
                 scope: {heading: '@'},
                 controller: 'NavbarCtrl',
-                templateUrl: 'template/navbar/navbar.html',
+                templateUrl: 'assets/template/navbar/navbar.html',
                 replace: true,
                 link: function ($scope, $element, $attrs, navbarCtrl) {
                     $scope.$location = $location;
