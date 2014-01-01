@@ -1,0 +1,24 @@
+{
+  "name": "angular-pouch-model",
+  "version": "0.0.1",
+  "main": "dist/angular-pouch-model.js",
+  "ignore": [
+    "app",
+    "config",
+    "spec",
+    "tasks",
+    ".travis.yml",
+    "Gruntfile.js",
+    "main.js",
+    "package.json"
+  ],
+  "dependencies": {
+      "pouchdb": "http://download.pouchdb.com/pouchdb-nightly.js",
+      "angular-pouch": "~0.0.2",
+      "node-uuid": "~1.4.1"
+  },
+  "devDependencies": {
+      "angular-mocks": "~1.2.0",
+      "angular-scenario": "~1.2.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "angular-pouch-model",
+  "version": "0.0.1",
+  "description": "promised based, $digest aware, object persistence layer for angularjs apps using PouchDB",
+  "homepage": "http://marfarma.viewdocs.io/angular-pouch-model",
+  "author": {
+    "name": "Pauli Price"
+  },
+  "main": "main.js",
+  "dependencies": {
+      "validate.js": "~0.1.3"
+  },
+  "devDependencies": {
+    "lineman": ">= 0.21.0",
+    "grunt-write-bower-json": "~0.0.1",
+    "lineman-bower": "0.0.1"
+  }
+}
