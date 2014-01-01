@@ -4651,10 +4651,24 @@ button.close{
 		bottom: 20px;
 	}
 }
-.clearfix:after{
-	display: table;
-	content: " ";
-	clear: both;
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after {
+  clear: both;
 }
 .center-block{
 	display: block;
