@@ -7780,6 +7780,10 @@
         		}
         	};
         }(DOMParser));
+        
+        var getElementByXpath = function (dom, path) {
+            return dom.evaluate(path, dom, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        };
 
         var myApp = angular.module('myApp', ['ui.bootstrap']).
                 directive('navbar', ['$location', function ($location) {
@@ -7802,11 +7806,13 @@
         function NavbarCtrl($scope, $timeout, $http) {
             var items = $scope.items = [];
             var itemsUrl = 'http://{{USER}}.viewdocs.io/{{NAME}}/nav';
+            var itemsXpath = '//*[@id="gistbody"]/div';
             
             $http.get(itemsUrl).success(function(data) {
                 var parser = new DOMParser();
                 var doc = parser.parseFromString(data, "text/html");
-                $scope.items = angular.fromJson(doc.firstChild.querySelectorAll('div.navjson').innerText);
+                
+                $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
             });
 
             this.select = $scope.select = function (item) {
