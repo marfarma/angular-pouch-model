@@ -7846,7 +7846,7 @@
                 angular.forEach($scope.items, function (header) {
                     var idValue = "section" + index++;
 
-                    header.attr("id",idValue);
+                    header.id = idValue;
                 });
               return $compile(element)($scope);
             }
