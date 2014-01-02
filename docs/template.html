@@ -7730,9 +7730,7 @@
                 </div>
                 <ul class="current">
                     <li ng-repeat="item in items" class="toctree-l1">
-                        <a href="#{{item.id}}" scroll-to="#{{item.id}}" offset="0" container="window">
-                            {{item.text}}
-                        </a>
+                        <a scroll-to="{{item.id}}">{{item.text}}</a>
                     </li>
                 </ul>
             </div>
@@ -7751,7 +7749,7 @@
     </div>
     <!-- ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.7.0/ui-bootstrap-tpls.js"></script>
@@ -7809,39 +7807,43 @@
         };
         angular.module('scrollto', []);
 
-        angular.module('scrollto')
-          .directive('scrollTo', ['$timeout', function ($timeout) {
-    
-            function scroll (settings) {
-              return function () {
-                var scrollPane = angular.element(settings.container);
-                var scrollTo = (typeof settings.scrollTo == "number") ? settings.scrollTo : angular.element(settings.scrollTo);
-                var scrollY = (typeof scrollTo == "number") ? scrollTo : scrollTo.offset().top + scrollPane.scrollTop() - settings.offset;
-                scrollPane.animate({scrollTop : scrollY }, settings.duration, settings.easing, function(){
-                  if (typeof callback == 'function') { callback.call(this); }
-                });
-              }
-            }
-    
+        angular.module("ngScrollTo",[])
+          .directive("scrollTo", ["$window", function($window){
             return {
-              restrict: 'A',
-              link: function (scope, element, attrs) {
-                var settings = angular.extend({
-                  container: window,
-                  scrollTo: angular.element(),
-                  offset: 0,
-                  duration: 150,
-                  easing: 'swing'
-                }, attrs);
+              restrict : "AC",
+              compile : function(){
+
+                var document = $window.document;
         
-                element.on('click', function () {
-                  $timeout(scroll(settings));
-                });
+                function scrollInto(idOrName) {//find element with the give id of name and scroll to the first element it finds
+                  if(!idOrName)
+                    $window.scrollTo(0, 0);
+                  //check if an element can be found with id attribute
+                  var el = document.getElementById(idOrName);
+                  if(!el) {//check if an element can be found with name attribute if there is no such id
+                    el = document.getElementsByName(idOrName);
+
+                    if(el && el.length)
+                      el = el[0];
+                    else
+                      el = null;
+                  }
+
+                  if(el) //if an element is found, scroll to the element
+                    el.scrollIntoView();
+                  //otherwise, ignore
+                }
+
+                return function(scope, element, attr) {
+                  element.bind("click", function(event){
+                    scrollInto(attr.scrollTo);
+                  });
+                };
               }
             };
-          }]);
-
-        var myApp = angular.module('myApp', ['ui.bootstrap','scrollto']).
+        }]);
+        
+        var myApp = angular.module('myApp', ['ui.bootstrap','ngScrollTo']).
         directive('navbar', ['$location', function ($location) {
             return {
                 restrict: 'E',
