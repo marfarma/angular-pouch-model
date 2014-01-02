@@ -7841,10 +7841,10 @@
             controller: 'SidebarnavCtrl',
             link: function ($scope, element) {
                 // add id to each element
-                var items = element.find('h1');
+                var headers = element.find('h1');
                 var index = 1;
                 $scope.items = [];
-                angular.forEach(items, function (header) {
+                angular.forEach(headers, function (header) {
                     var item = new Object();
                     header.id = "section" + index++;
                     item.id = header.id;
@@ -7856,7 +7856,7 @@
           };
         });
         function SidebarnavCtrl($scope) {
-            var items = $scope.items = [];
+            var items = $scope.items = $scope.$parent.items;
         }
         SidebarnavCtrl.$inject = ['$scope'];
 
