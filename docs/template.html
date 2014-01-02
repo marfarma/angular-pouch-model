@@ -7816,7 +7816,7 @@
             });
 
             $scope.$watch('$scope.items', function () {
-                navbarCtrl.selectByUrl($location.absUrl())
+                this.selectByUrl($location.absUrl());
             }, true);
             
             this.select = $scope.select = function (item) {
