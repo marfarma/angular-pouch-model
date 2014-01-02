@@ -7730,7 +7730,7 @@
                 </div>
                 <ul class="current">
                     <li ng-repeat="item in items" class="toctree-l1">
-                        <a class="reference internal" href="" scroll-to="{{item.id}}">{{{item.text}}</a>
+                        <a class="reference internal" href="" scroll-to="{{item.id}}">{{item.text}}</a>
                     </li>
                 </ul>
             </div>
@@ -7856,10 +7856,7 @@
           };
         });
         function SidebarnavCtrl($scope) {
-            var items = $scope.items = $scope.$parent.items;
-            this.itemText = function(item){
-              return item.innerText;  
-            };   
+            var items = $scope.items = [];
         }
         SidebarnavCtrl.$inject = ['$scope'];
 
