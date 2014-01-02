@@ -7844,7 +7844,7 @@
                 $scope.items = element.find('h1');
 
                 angular.forEach($scope.items, function (header) {
-                    var index = $scope.items.indexOf( header );
+                    var index = $scope.items.index( header );
                     var idValue = "section"+index;
 
                     header.attr("id",idValue);
@@ -7854,7 +7854,7 @@
           };
         });
         function SidebarnavCtrl($scope) {
-            var items = $scope.items = [];   
+            var items = $scope.items = new Array();   
         }
         SidebarnavCtrl.$inject = ['$scope'];
 
