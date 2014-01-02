@@ -7830,7 +7830,7 @@
             var that = this;
             var items = $scope.items = [];
             var itemsUrl = 'http://{{USER}}.viewdocs.io/{{NAME}}/nav';
-            var itemsXpath = '//*[@id="gistbody"]/div';
+            var itemsXpath = '/html/body/div[2]/div/div[2]/div';
             
             this.select = $scope.select = function (item) {
                 angular.forEach(items, function (item) {
