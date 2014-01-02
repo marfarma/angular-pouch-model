@@ -7817,7 +7817,7 @@
             };
 
             this.selectByUrl = function (url) {
-                angular.forEach(items, function (item) {
+                angular.forEach($scope.items, function (item) {
                     if ('http://{{USER}}.viewdocs.io/{{NAME}}/' + item.link === url) {
                         $scope.select(item);
                     }
