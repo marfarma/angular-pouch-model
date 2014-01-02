@@ -7717,11 +7717,6 @@
     </div>
     <div class="container"> 
         <section class="content">
-            <header>
-                <p id="gistid">
-                    <a href="http://github.com/{{USER}}/{{NAME}}">Github Repository for {{NAME}}</a>
-                </p>
-            </header>
             <article id="gistbody">
                 {{CONTENT}}
             </article>
@@ -7854,8 +7849,13 @@
                                 <a href="/{{NAME}}/{{item.link}}">{{item.title}}</a>
                             </li>
                         </ul>
+                                                
                         <ul class="nav navbar-nav navbar-right">
+                            <li>
+                            <a href="http://github.com/{{USER}}/{{NAME}}" target="_blank">On Github</a>
+                            </li>
                         </ul>
+                        
                     </div>
                 </div>
             </div>
