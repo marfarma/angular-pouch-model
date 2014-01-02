@@ -7841,7 +7841,7 @@
             controller: 'SidebarnavCtrl',
             link: function ($scope, element) {
                 // add id to each element
-                $scope.items = getElementByXpath(element,'//h:h1');
+                $scope.items = element.find('h1');
 
                 angular.forEach($scope.items, function (header) {
                     var index = theArr.indexOf( header );
