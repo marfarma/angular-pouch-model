@@ -1,5 +1,4 @@
-[Read Me in docs directory](/angular-pouch-model/README)
+<div class="page-header">
+    <h1>Angular Pouch Model</h1>
+</div>
 
-
-
-> Written with [StackEdit](https://stackedit.io/).
