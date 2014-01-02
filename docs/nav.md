@@ -1,6 +1,8 @@
 <div class="navjson">
     [
-        {"title": "README", "link": "README"},
-        {"title": "About", "link": "about"}
+        {"title": "API", "link": "api"},
+        {"title": "Validations", "link": "validations"},
+        {"title": "Query Language", "link": "gql"},
+        {"title": "Annotated Code", "link": "annotated"}
     ]
 </div>

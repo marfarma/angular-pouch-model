@@ -1,3 +1,6 @@
+<div class="page-header">
+    <h1>Angular Pouch Model API</h1>
+</div>
 # angular-pouch-model
 
 promised based, $digest aware, object persistence layer for angularjs apps using PouchDB
