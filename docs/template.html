@@ -7730,7 +7730,9 @@
                 </div>
                 <ul class="current">
                     <li ng-repeat="item in items" class="toctree-l1">
-                        <a scroll-to="#{{item.id}}" offset="0" container="window">{{item.text}}</a>
+                        <a href="#{{item.id}}" scroll-to="#{{item.id}}" offset="0" container="window">
+                            {{item.text}}
+                        </a>
                     </li>
                 </ul>
             </div>
