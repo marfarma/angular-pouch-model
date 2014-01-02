@@ -7756,7 +7756,7 @@
 
         function NavbarCtrl($scope, $timeout, $http) {
             var items = $scope.items = [];
-            var itemsUrl = 'http://{{USER}}.viewdocs.io/{{NAME}}/nav.json';
+            var itemsUrl = 'https://raw.github.com/{{USER}}/{{NAME}}/master/docs/nav.json';
             
             $http.get(itemsUrl).success(function(data) {
               $scope.items = data;
