@@ -7854,7 +7854,7 @@
         });
         function SidebarnavCtrl($scope) {
             var items = $scope.items = $scope.$parent.items;
-            this.itemText(item){
+            this.itemText = function(item){
               return item.innerText;  
             };   
         }
