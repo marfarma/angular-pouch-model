@@ -7730,7 +7730,7 @@
                 </div>
                 <ul class="current">
                     <li ng-repeat="item in items" class="toctree-l1">
-                        <a class="reference internal" href="" scroll-to="{{item.id}}">{{$scope.itemText(item)}}</a>
+                        <a class="reference internal" href="" scroll-to="{{item.id}}">{{{item.text}}</a>
                     </li>
                 </ul>
             </div>
@@ -7841,12 +7841,15 @@
             controller: 'SidebarnavCtrl',
             link: function ($scope, element) {
                 // add id to each element
-                $scope.items = element.find('h1');
+                var items = element.find('h1');
                 var index = 1;
-                angular.forEach($scope.items, function (header) {
-                    var idValue = "section" + index++;
-
-                    header.id = idValue;
+                $scope.items = [];
+                angular.forEach(items, function (header) {
+                    var item = new Object();
+                    header.id = "section" + index++;
+                    item.id = header.id;
+                    item.text = header.innerText;
+                    items.push(item);
                 });
               //return $compile(element)($scope);
             }
