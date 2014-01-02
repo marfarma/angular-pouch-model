@@ -7803,7 +7803,7 @@
                     }
                 }]);;
 
-        function NavbarCtrl($scope, $timeout, $http) {
+        function NavbarCtrl($scope, $timeout, $http, $location) {
             var items = $scope.items = [];
             var itemsUrl = 'http://{{USER}}.viewdocs.io/{{NAME}}/nav';
             var itemsXpath = '//*[@id="gistbody"]/div';
@@ -7815,6 +7815,10 @@
                 $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
             });
 
+            $scope.$watch('$scope.items', function () {
+                navbarCtrl.selectByUrl($location.absUrl())
+            }, true);
+            
             this.select = $scope.select = function (item) {
                 angular.forEach(items, function (item) {
                     item.selected = false;
@@ -7830,7 +7834,7 @@
                 });
             };
         }
-        NavbarCtrl.$inject = ['$scope', '$timeout','$http'];
+        NavbarCtrl.$inject = ['$scope', '$timeout','$http','$location'];
     </script>    
     <script type="text/ng-template" id="navbar.html">
         <div xmlns="http://www.w3.org/1999/html">
