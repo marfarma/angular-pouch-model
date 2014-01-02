@@ -7747,7 +7747,7 @@
                         replace: true,
                         link: function ($scope, $element, $attrs, navbarCtrl) {
                             $scope.$location = $location;
-                            $scope.$watch('$location.path()', function (locationPath) {
+                            $scope.$watch('$location.absUrl()', function (locationPath) {
                                 navbarCtrl.selectByUrl(locationPath)
                             });
                         }
@@ -7769,7 +7769,7 @@
 
             this.selectByUrl = function (url) {
                 angular.forEach(items, function (item) {
-                    if ('/' + item.link === url) {
+                    if ('/{{NAME}}/' + item.link === url) {
                         $scope.select(item);
                     }
                 });
