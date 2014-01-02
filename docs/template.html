@@ -7734,8 +7734,53 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.7.0/ui-bootstrap-tpls.js"></script>
     <script type="text/javascript"> 
         'use strict';
+        /*
+         * DOMParser HTML extension
+         * 2012-09-04
+         * 
+         * By Eli Grey, http://eligrey.com
+         * Public domain.
+         * NO WARRANTY EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.
+         */
 
-        // Declare app level module which depends on filters, and services
+        /*! @source https://gist.github.com/1129031 */
+        /*global document, DOMParser*/
+
+        (function(DOMParser) {
+        	"use strict";
+
+        	var
+        	  DOMParser_proto = DOMParser.prototype
+        	, real_parseFromString = DOMParser_proto.parseFromString
+        	;
+
+        	// Firefox/Opera/IE throw errors on unsupported types
+        	try {
+        		// WebKit returns null on unsupported types
+        		if ((new DOMParser).parseFromString("", "text/html")) {
+        			// text/html parsing is natively supported
+        			return;
+        		}
+        	} catch (ex) {}
+
+        	DOMParser_proto.parseFromString = function(markup, type) {
+        		if (/^\s*text\/html\s*(?:;|$)/i.test(type)) {
+        			var
+        			  doc = document.implementation.createHTMLDocument("")
+        			;
+        	      		if (markup.toLowerCase().indexOf('<!doctype') > -1) {
+                			doc.documentElement.innerHTML = markup;
+              			}
+              			else {
+                			doc.body.innerHTML = markup;
+              			}
+        			return doc;
+        		} else {
+        			return real_parseFromString.apply(this, arguments);
+        		}
+        	};
+        }(DOMParser));
+
         var myApp = angular.module('myApp', ['ui.bootstrap']).
                 directive('navbar', ['$location', function ($location) {
                     return {
@@ -7756,10 +7801,12 @@
 
         function NavbarCtrl($scope, $timeout, $http) {
             var items = $scope.items = [];
-            var itemsUrl = 'https://raw.github.com/{{USER}}/{{NAME}}/master/docs/nav.json';
+            var itemsUrl = 'http://{{USER}}.viewdocs.io/{{NAME}}/nav';
             
             $http.get(itemsUrl).success(function(data) {
-              $scope.items = data;
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(data, "text/html");
+                $scope.items = angular.fromJson(doc.firstChild.querySelectorAll('div.navjson').innerText);
             });
 
             this.select = $scope.select = function (item) {
