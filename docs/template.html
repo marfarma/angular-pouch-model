@@ -7804,20 +7804,10 @@
                 }]);;
 
         function NavbarCtrl($scope, $timeout, $http, $location) {
+            var that = this;
             var items = $scope.items = [];
             var itemsUrl = 'http://{{USER}}.viewdocs.io/{{NAME}}/nav';
             var itemsXpath = '//*[@id="gistbody"]/div';
-            
-            $scope.$watch('$scope.items', function () {
-                $scope.selectByUrl($location.absUrl());
-            }, true);
-            
-            $http.get(itemsUrl).success(function(data) {
-                var parser = new DOMParser();
-                var doc = parser.parseFromString(data, "text/html");
-                
-                $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
-            });
             
             this.select = $scope.select = function (item) {
                 angular.forEach(items, function (item) {
@@ -7834,6 +7824,17 @@
                 });
             };
 
+            $scope.$watch('$scope.items', function () {
+                that.selectByUrl($location.absUrl());
+            }, true);
+            
+            $http.get(itemsUrl).success(function(data) {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(data, "text/html");
+                
+                $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
+            });
+            
         }
         NavbarCtrl.$inject = ['$scope', '$timeout','$http','$location'];
     </script>    
