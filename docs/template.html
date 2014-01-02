@@ -7804,6 +7804,7 @@
                 }]);;
 
         function NavbarCtrl($scope, $timeout, $http, $location) {
+            var that = this;
             var items = $scope.items = [];
             var itemsUrl = 'http://{{USER}}.viewdocs.io/{{NAME}}/nav';
             var itemsXpath = '//*[@id="gistbody"]/div';
@@ -7830,7 +7831,7 @@
             };
 
             $scope.$watch('$scope.items', function () {
-                this.selectByUrl($location.absUrl());
+                that.selectByUrl($location.absUrl());
             }, true);
             
         }
