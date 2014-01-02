@@ -7814,11 +7814,6 @@
                 
                 $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
             });
-
-            $scope.$watch('$scope.items', function () {
-                this.selectByUrl($location.absUrl());
-            }, true);
-            
             this.select = $scope.select = function (item) {
                 angular.forEach(items, function (item) {
                     item.selected = false;
@@ -7833,6 +7828,11 @@
                     }
                 });
             };
+
+            $scope.$watch('$scope.items', function () {
+                this.selectByUrl($location.absUrl());
+            }, true);
+            
         }
         NavbarCtrl.$inject = ['$scope', '$timeout','$http','$location'];
     </script>    
