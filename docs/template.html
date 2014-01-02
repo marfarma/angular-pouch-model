@@ -7842,10 +7842,9 @@
             link: function ($scope, element) {
                 // add id to each element
                 $scope.items = element.find('h1');
-
+                var index = 1;
                 angular.forEach($scope.items, function (header) {
-                    var index = $scope.items.index( header );
-                    var idValue = "section"+index;
+                    var idValue = "section" + index++;
 
                     header.attr("id",idValue);
                 });
