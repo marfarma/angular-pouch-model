@@ -7754,11 +7754,13 @@
                     }
                 }]);;
 
-        function NavbarCtrl($scope, $timeout) {
-            var items = $scope.items = [
-                {title: 'README', link: 'README'},
-                {title: 'About', link: 'about'}
-            ];
+        function NavbarCtrl($scope, $timeout, $http) {
+            var items = $scope.items = [];
+            var itemsUrl = 'http://{{USER}}.viewdocs.io/{{NAME}}/nav.json';
+            
+            $http.get(itemsUrl).success(function(data) {
+              $scope.items = data;
+            });
 
             this.select = $scope.select = function (item) {
                 angular.forEach(items, function (item) {
@@ -7775,7 +7777,7 @@
                 });
             };
         }
-        NavbarCtrl.$inject = ['$scope', '$timeout'];
+        NavbarCtrl.$inject = ['$scope', '$timeout','$http'];
     </script>    
     <script type="text/ng-template" id="navbar.html">
         <div xmlns="http://www.w3.org/1999/html">
