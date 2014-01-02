@@ -7769,7 +7769,7 @@
 
             this.selectByUrl = function (url) {
                 angular.forEach(items, function (item) {
-                    if ('/{{NAME}}/' + item.link === url) {
+                    if ('http://{{USER}}.viewdocs.io/{{NAME}}/' + item.link === url) {
                         $scope.select(item);
                     }
                 });
