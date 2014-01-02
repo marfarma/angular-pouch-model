@@ -7720,11 +7720,35 @@
         <navbar heading="Angular Pouch Model"/>
     </div>
     <div class="container"> 
-        <section class="content">
+        <!-- Docs nav
+         ================================================== -->
+        <div class="row main-row">
+
+            <div class="span3 sidebar bs-docs-sidebar">
+                <div class="page-title">
+                    <h4>DOCUMENTATION</h4>
+                </div>
+            
+                <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Introduction</a></li>
+                  </li>
+                </ul>
+
+            </div>
+
+            <!-- body block -->
+            <div class="span9 main-content">
+
+                <!-- Main section
+                ================================================== -->
+                {{CONTENT}}
+            </div>
+        </div>
+        <!-- <section class="content">
             <article id="gistbody">
                 {{CONTENT}}
             </article>
-        </section>
+        </section> -->
     </div>
     <!-- ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
