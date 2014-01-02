@@ -7824,15 +7824,12 @@
                 });
             };
 
-            $scope.$watch('$scope.items', function () {
-                that.selectByUrl($location.absUrl());
-            }, true);
-            
             $http.get(itemsUrl).success(function(data) {
                 var parser = new DOMParser();
                 var doc = parser.parseFromString(data, "text/html");
                 
                 $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
+                that.selectByUrl($location.absUrl());
             });
             
         }
