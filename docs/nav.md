@@ -1,4 +1,4 @@
-<div class="navjson">
+<div id="navjson">
     [
         {"title": "API", "link": "api"},
         {"title": "Validations", "link": "validations"},
