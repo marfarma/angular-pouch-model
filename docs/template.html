@@ -7722,13 +7722,13 @@
     <div class="container"> 
         <!-- Docs nav
          ================================================== -->
-        <div class="row main-row">
+        <div class="row main-row" ng-controller="SidebarnavCtrl">
 
             <div class="col-md-3 sidebar bs-docs-sidebar">
                 <div class="page-title">
                     <h4>SECTION</h4>
                 </div>
-                <ul class="current" ng-controller="SidebarnavCtrl">
+                <ul class="current">
                     <li ng-repeat="item in items" class="toctree-l1">
                         <a class="reference internal" href="" scroll-to="{{item.id}}">item.innerText</a>
                     </li>
