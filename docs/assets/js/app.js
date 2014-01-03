@@ -98,6 +98,7 @@ directive('navbar', ['$location', '$http',  function ($location, $http) {
         replace: true,
         link: function ($scope, $element, $attrs, navbarCtrl) {
             
+            var itemsXpath = '//*[@id="global"]/div/div';
             var itemsUrl = 'http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/nav';
             $http.get(itemsUrl).success(function(data) {
                 var parser = new DOMParser();
@@ -156,7 +157,7 @@ function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
         return that.items;
     };
     
-    var itemsXpath = '//*[@id="global"]/div/div';
+    // var itemsXpath = '//*[@id="global"]/div/div';
     
     this.select = $scope.select = function (item) {
         angular.forEach(items, function (item) {
