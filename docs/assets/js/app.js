@@ -92,8 +92,9 @@ directive('navbar', ['$location', function ($location) {
     return {
         restrict: 'E',
         transclude: true,
-        scope: { heading: '@', name: '=', user: '='},
-        controller: 'NavbarCtrl',
+        require:'^NavbarCtrl',
+        scope: { heading: '@', name: '=name', user: '=name'},
+        //controller: 'NavbarCtrl',
         templateUrl: 'navbar.html',
         replace: true,
         link: function ($scope, $element, $attrs, navbarCtrl) {
