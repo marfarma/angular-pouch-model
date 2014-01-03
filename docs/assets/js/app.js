@@ -92,11 +92,13 @@ directive('navbar', ['$location', function ($location) {
     return {
         restrict: 'E',
         transclude: true,
-        scope: { heading: '@', name: '@', user: '@'},
+        scope: { heading: '@', name: '=', user: '='},
         controller: 'NavbarCtrl',
         templateUrl: 'navbar.html',
         replace: true,
-        link: function ($scope, $element, $attrs, navbarCtrl) {            
+        link: function ($scope, $element, $attrs, navbarCtrl) {
+            $scope.name = $scope.name;            
+            $scope.user = $scope.user;            
             $scope.$watch('$location.absUrl()', function (locationPath) {
                 navbarCtrl.selectByUrl(locationPath)
             });
