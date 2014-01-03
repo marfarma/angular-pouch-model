@@ -92,7 +92,7 @@ directive('navbar', ['$location', function ($location) {
     return {
         restrict: 'E',
         transclude: true,
-        scope: { heading: '@', name: "@", user: '@' },
+        scope: false,
         controller: 'NavbarCtrl',
         templateUrl: 'navbar.html',
         replace: true,
@@ -130,6 +130,7 @@ SidebarnavCtrl.$inject = ['$scope'];
 function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
     $scope.name = $attrs.name;
     $scope.user = $attrs.user;
+    $scope.heading = $attrs.heading;
     
     var that = this;
     var items = $scope.items = [];
