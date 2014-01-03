@@ -105,7 +105,7 @@ directive('navbar', ['$location', '$http',  function ($location, $http) {
                 var doc = parser.parseFromString(data, "text/html");
 
                 $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
-                that.selectByUrl($location.absUrl());
+                navbarCtrl.selectByUrl($location.absUrl());
             });
             
             $scope.$watch('$location.absUrl()', function (locationPath) {
