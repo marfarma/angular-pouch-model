@@ -92,7 +92,7 @@ directive('navbar', ['$location', '$http',  function ($location, $http) {
     return {
         restrict: 'E',
         transclude: true,
-        scope: { heading: '@', user: '@', name: '@'},
+        scope: { heading: '@'},
         controller: 'NavbarCtrl',
         templateUrl: 'navbar.html',
         replace: true,
