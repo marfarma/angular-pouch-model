@@ -174,15 +174,15 @@ function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
     };
 
     // run once, in transcluded child scope, where heading will be defined
-    if (typeof $scope.name !== 'undefined'){
-        var itemsUrl = 'http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/nav';
-        $http.get(itemsUrl).success(function(data) {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(data, "text/html");
-
-            $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
-            that.selectByUrl($location.absUrl());
-        });
-    }
+    // if (typeof $scope.name !== 'undefined'){
+    //     var itemsUrl = 'http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/nav';
+    //     $http.get(itemsUrl).success(function(data) {
+    //         var parser = new DOMParser();
+    //         var doc = parser.parseFromString(data, "text/html");
+    // 
+    //         $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
+    //         that.selectByUrl($location.absUrl());
+    //     });
+    // }
 }
 NavbarCtrl.$inject = ['$scope', '$timeout','$http','$location','$attrs'];
