@@ -88,7 +88,7 @@ angular.module("ngScrollTo",[])
   }]);
  
 var myApp = angular.module('myApp', ['ui.bootstrap','ngScrollTo']).
-directive('navbar', ['$location', function ($location) {
+directive('navbar', ['$location', '$http', function ($location, $http) {
     return {
         restrict: 'E',
         transclude: true,
