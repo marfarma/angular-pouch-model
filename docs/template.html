@@ -16,9 +16,6 @@
         <div class="row main-row" ng-controller="SidebarnavCtrl">
 
             <div class="col-md-3 sidebar list-group">
-                <div class="page-title list-group-item">
-                    <h2>SECTION</h2>
-                </div>
                 <div ng-repeat="item in items" class="list-group-item">
                     <a scroll-to="{{item.id}}">{{item.text}}</a>
                 </div>
