@@ -100,6 +100,8 @@ directive('navbar', ['$location', function ($location) {
         templateUrl: 'navbar.html',
         replace: true,
         link: function ($scope, $element, $attrs, navbarCtrl) {
+            $scope.name = attrs.name;
+            $scope.user = attrs.user;
             $scope.$location = $location;
             $scope.$watch('$location.absUrl()', function (locationPath) {
                 navbarCtrl.selectByUrl(locationPath)
@@ -131,7 +133,9 @@ function SidebarnavCtrl($scope) {
 }
 SidebarnavCtrl.$inject = ['$scope'];
 
-function NavbarCtrl($scope, $timeout, $http, $location) {
+function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
+    $scope.name = attrs.name;
+    $scope.user = attrs.user;
     var that = this;
     var items = $scope.items = [];
     var itemsUrl = 'http://marfarma.viewdocs.io/angular-pouch-model/nav';
