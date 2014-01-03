@@ -131,7 +131,7 @@ SidebarnavCtrl.$inject = ['$scope'];
 function NavbarCtrl($scope, $timeout, $http, $location) {
     var that = this;
     var items = $scope.items = [];
-    var itemsUrl = 'http://{{USER}}.viewdocs.io/{{NAME}}/nav';
+    var itemsUrl = 'http://marfarma.viewdocs.io/angular-pouch-model/nav';
     var itemsXpath = '//*[@id="global"]/div/div';
     
     this.select = $scope.select = function (item) {
