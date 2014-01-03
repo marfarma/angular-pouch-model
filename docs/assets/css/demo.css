@@ -7701,3 +7701,8 @@ footer p{clear:left;margin-bottom:0}
 @media (max-width:767px){.section-preview .image img{width:100%}}
 .bsa .one .bsa_it_ad{border:none !important;background-color:transparent !important}.bsa .one .bsa_it_ad .bsa_it_t,.bsa .one .bsa_it_ad .bsa_it_d{color:inherit !important}
 .bsa .one .bsa_it_p{display:none}
+@media (min-width: 1200px) {
+    .container{
+        max-width: 970px;
+    }
+}        
