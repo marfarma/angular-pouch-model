@@ -128,9 +128,9 @@ function SidebarnavCtrl($scope) {
 SidebarnavCtrl.$inject = ['$scope'];
 
 function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
-    $scope.name = $attrs.name;
-    $scope.user = $attrs.user;
-    $scope.heading = $attrs.heading;
+    $scope.name = $scope.name || $attrs.name;
+    $scope.user = $scope.user || $attrs.user;
+    $scope.heading = $scope.heading || $attrs.heading;
     
     var that = this;
     var items = $scope.items = [];
