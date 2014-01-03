@@ -92,21 +92,11 @@ directive('navbar', ['$location', function ($location) {
     return {
         restrict: 'E',
         transclude: true,
-        scope: { heading: '@',
-                 name: '=name',
-                 user: '=user'
-                },
+        scope: { heading: '@' },
         controller: 'NavbarCtrl',
         templateUrl: 'navbar.html',
         replace: true,
-        link: function ($scope, $element, $attrs, navbarCtrl) {
-            attr.$observe('name', function(actual_value) {
-                  $scope.name = actual_value;
-            });
-            attr.$observe('name', function(actual_value) {
-                  $scope.user = actual_value;
-            });
-            
+        link: function ($scope, $element, $attrs, navbarCtrl) {            
             $scope.$watch('$location.absUrl()', function (locationPath) {
                 navbarCtrl.selectByUrl(locationPath)
             });
@@ -160,17 +150,13 @@ function NavbarCtrl($scope, $timeout, $http, $location, $attrs, $element) {
         });
     };
 
-    $scope.$watch('$scope.name + $scope.user', function(v) {
-        if ($scope.name && $scope.user) {
-            var itemsUrl = 'http://marfarma.viewdocs.io/angular-pouch-model/nav';
-            $http.get(itemsUrl).success(function(data) {
-                var parser = new DOMParser();
-                var doc = parser.parseFromString(data, "text/html");
-        
-                $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
-                that.selectByUrl($location.absUrl());
-            });
-        }
-    });                
+    var itemsUrl = 'http://marfarma.viewdocs.io/angular-pouch-model/nav';
+    $http.get(itemsUrl).success(function(data) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(data, "text/html");
+
+        $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
+        that.selectByUrl($location.absUrl());
+    });
 }
 NavbarCtrl.$inject = ['$scope', '$timeout','$http','$location','$attrs','$element'];

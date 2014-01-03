@@ -7,8 +7,8 @@
     <link href="http://{{USER}}.github.io/{{NAME}}/docs/assets/css/demo.css" rel="stylesheet"/>
 </head>
 <body>
-    <div>
-        <navbar heading="Angular Pouch Model" name={{NAME}} user={{USER}}/>
+    <div ng-controller="NavbarCtrl" name={{NAME}} user={{USER}}>
+        <navbar heading="Angular Pouch Model"/>
     </div>
     <div class="container"> 
         <!-- Docs nav
