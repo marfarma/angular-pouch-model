@@ -127,7 +127,7 @@ function SidebarnavCtrl($scope) {
 }
 SidebarnavCtrl.$inject = ['$scope'];
 
-function NavbarCtrl($scope, $timeout, $http, $location, $attrs, $element) {
+function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
     $scope.name = $attrs.name;
     $scope.user = $attrs.user;
     
@@ -144,13 +144,13 @@ function NavbarCtrl($scope, $timeout, $http, $location, $attrs, $element) {
 
     this.selectByUrl = function (url) {
         angular.forEach($scope.items, function (item) {
-            if ('http://{{USER}}.viewdocs.io/{{NAME}}/' + item.link === url) {
+            if ('http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/' + item.link === url) {
                 $scope.select(item);
             }
         });
     };
 
-    var itemsUrl = 'http://marfarma.viewdocs.io/angular-pouch-model/nav';
+    var itemsUrl = 'http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/nav';
     $http.get(itemsUrl).success(function(data) {
         var parser = new DOMParser();
         var doc = parser.parseFromString(data, "text/html");
@@ -159,4 +159,4 @@ function NavbarCtrl($scope, $timeout, $http, $location, $attrs, $element) {
         that.selectByUrl($location.absUrl());
     });
 }
-NavbarCtrl.$inject = ['$scope', '$timeout','$http','$location','$attrs','$element'];
+NavbarCtrl.$inject = ['$scope', '$timeout','$http','$location','$attrs'];
