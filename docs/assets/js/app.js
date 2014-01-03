@@ -92,11 +92,21 @@ directive('navbar', ['$location', function ($location) {
     return {
         restrict: 'E',
         transclude: true,
-        scope: { heading: '@'},
+        scope: { heading: '@', user: '@', name: '@'},
         controller: 'NavbarCtrl',
         templateUrl: 'navbar.html',
         replace: true,
         link: function ($scope, $element, $attrs, navbarCtrl) {
+            
+            var itemsUrl = 'http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/nav';
+            $http.get(itemsUrl).success(function(data) {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(data, "text/html");
+
+                $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
+                that.selectByUrl($location.absUrl());
+            });
+            
             $scope.$watch('$location.absUrl()', function (locationPath) {
                 navbarCtrl.selectByUrl(locationPath)
             });
@@ -164,9 +174,7 @@ function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
     };
 
     // run once, in transcluded child scope, where heading will be defined
-    if (typeof $scope.heading !== 'undefined'){
-        $scope.name = $scope.getName();            
-        $scope.user = $scope.getUser();            
+    if (typeof $scope.name !== 'undefined'){
         var itemsUrl = 'http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/nav';
         $http.get(itemsUrl).success(function(data) {
             var parser = new DOMParser();
