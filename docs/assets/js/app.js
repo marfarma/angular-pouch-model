@@ -100,9 +100,13 @@ directive('navbar', ['$location', function ($location) {
         templateUrl: 'navbar.html',
         replace: true,
         link: function ($scope, $element, $attrs, navbarCtrl) {
-            $scope.name = $attrs.name;
-            $scope.user = $attrs.user;
-            $scope.$location = $location;
+            attr.$observe('name', function(actual_value) {
+                  $scope.name = actual_value;
+            });
+            attr.$observe('name', function(actual_value) {
+                  $scope.user = actual_value;
+            });
+            
             $scope.$watch('$location.absUrl()', function (locationPath) {
                 navbarCtrl.selectByUrl(locationPath)
             });
@@ -133,12 +137,12 @@ function SidebarnavCtrl($scope) {
 }
 SidebarnavCtrl.$inject = ['$scope'];
 
-function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
+function NavbarCtrl($scope, $timeout, $http, $location) {
     $scope.name = $attrs.name;
     $scope.user = $attrs.user;
+    
     var that = this;
     var items = $scope.items = [];
-    var itemsUrl = 'http://marfarma.viewdocs.io/angular-pouch-model/nav';
     var itemsXpath = '//*[@id="global"]/div/div';
     
     this.select = $scope.select = function (item) {
@@ -156,13 +160,17 @@ function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
         });
     };
 
-    $http.get(itemsUrl).success(function(data) {
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(data, "text/html");
+    $scope.$watch('$scope.name + $scope.user', function(v) {
+        if ($scope.name && $scope.user) {
+            var itemsUrl = 'http://marfarma.viewdocs.io/angular-pouch-model/nav';
+            $http.get(itemsUrl).success(function(data) {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(data, "text/html");
         
-        $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
-        that.selectByUrl($location.absUrl());
-    });
-    
+                $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
+                that.selectByUrl($location.absUrl());
+            });
+        }
+    });                
 }
 NavbarCtrl.$inject = ['$scope', '$timeout','$http','$location','$attrs'];
