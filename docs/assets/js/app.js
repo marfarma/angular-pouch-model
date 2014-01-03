@@ -86,7 +86,7 @@ angular.module("ngScrollTo",[])
       }
     };
 }]);
-
+ 
 var myApp = angular.module('myApp', ['ui.bootstrap','ngScrollTo']).
 directive('navbar', ['$location', function ($location) {
     return {
