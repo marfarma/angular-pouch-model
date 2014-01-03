@@ -150,13 +150,15 @@ function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
         });
     };
 
-    var itemsUrl = 'http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/nav';
-    $http.get(itemsUrl).success(function(data) {
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(data, "text/html");
+    $scope.$watch('$scope.user', function(){
+        var itemsUrl = 'http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/nav';
+        $http.get(itemsUrl).success(function(data) {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(data, "text/html");
 
-        $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
-        that.selectByUrl($location.absUrl());
+            $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
+            that.selectByUrl($location.absUrl());
+        });
     });
 }
 NavbarCtrl.$inject = ['$scope', '$timeout','$http','$location','$attrs'];
