@@ -146,21 +146,6 @@ SidebarnavCtrl.$inject = ['$scope'];
 
 function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
     $scope.items = $scope.items || [];
-    // var that = this;
-    // $scope.name = $scope.name || $attrs.name;
-    // $scope.user = $scope.user || $attrs.user;
-    // $scope.heading = $scope.heading || $attrs.heading;
-    
-    
-    // this.getName = $scope.getName = function () {
-    //     return that.name;
-    // };
-    // this.getUser = $scope.getUser = function () {
-    //     return that.user;
-    // };
-    // this.getItems = $scope.getItems = function () {
-    //     return that.items;
-    // };
     
     this.select = $scope.select = function (item) {
         angular.forEach($scope.items, function (item) {
@@ -176,6 +161,5 @@ function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
             }
         });
     };
-
 }
 NavbarCtrl.$inject = ['$scope', '$timeout','$http','$location','$attrs'];
