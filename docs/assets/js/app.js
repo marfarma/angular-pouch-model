@@ -98,6 +98,7 @@ directive('navbar', ['$location', '$http',  function ($location, $http) {
         replace: true,
         link: function ($scope, $element, $attrs, navbarCtrl) {
             
+            var items = $scope.items = [];
             var itemsXpath = '//*[@id="global"]/div/div';
             var itemsUrl = 'http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/nav';
             $http.get(itemsUrl).success(function(data) {
@@ -120,7 +121,7 @@ directive('sidebarNav', function($compile) {
     controller: 'SidebarnavCtrl',
     link: function ($scope, element) {
         // add id to each element
-        var headers = element.find('h1');
+        var headers = element.find('h2');
         var index = 1;
         $scope.items = [];
         angular.forEach(headers, function (header) {
@@ -140,24 +141,21 @@ function SidebarnavCtrl($scope) {
 SidebarnavCtrl.$inject = ['$scope'];
 
 function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
-    var that = this;
-    $scope.name = $scope.name || $attrs.name;
-    $scope.user = $scope.user || $attrs.user;
-    $scope.heading = $scope.heading || $attrs.heading;
+    // var that = this;
+    // $scope.name = $scope.name || $attrs.name;
+    // $scope.user = $scope.user || $attrs.user;
+    // $scope.heading = $scope.heading || $attrs.heading;
     
-    var items = $scope.items = [];
     
-    this.getName = $scope.getName = function () {
-        return that.name;
-    };
-    this.getUser = $scope.getUser = function () {
-        return that.user;
-    };
-    this.getItems = $scope.getItems = function () {
-        return that.items;
-    };
-    
-    // var itemsXpath = '//*[@id="global"]/div/div';
+    // this.getName = $scope.getName = function () {
+    //     return that.name;
+    // };
+    // this.getUser = $scope.getUser = function () {
+    //     return that.user;
+    // };
+    // this.getItems = $scope.getItems = function () {
+    //     return that.items;
+    // };
     
     this.select = $scope.select = function (item) {
         angular.forEach(items, function (item) {
@@ -174,16 +172,5 @@ function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
         });
     };
 
-    // run once, in transcluded child scope, where heading will be defined
-    // if (typeof $scope.name !== 'undefined'){
-    //     var itemsUrl = 'http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/nav';
-    //     $http.get(itemsUrl).success(function(data) {
-    //         var parser = new DOMParser();
-    //         var doc = parser.parseFromString(data, "text/html");
-    // 
-    //         $scope.items = angular.fromJson(getElementByXpath(doc,itemsXpath).innerText);
-    //         that.selectByUrl($location.absUrl());
-    //     });
-    // }
 }
 NavbarCtrl.$inject = ['$scope', '$timeout','$http','$location','$attrs'];
