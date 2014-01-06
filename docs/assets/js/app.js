@@ -99,6 +99,10 @@ directive('navbar', ['$location', '$http',  function ($location, $http) {
         link: function ($scope, $element, $attrs, navbarCtrl) {
             
             var items = $scope.items = [];
+            $scope.name = $scope.name || $attrs.name;
+            $scope.user = $scope.user || $attrs.user;
+            $scope.heading = $scope.heading || $attrs.heading;
+            
             var itemsXpath = '//*[@id="global"]/div/div';
             var itemsUrl = 'http://'+ $scope.user + '.viewdocs.io/' + $scope.name + '/nav';
             $http.get(itemsUrl).success(function(data) {
@@ -142,9 +146,9 @@ SidebarnavCtrl.$inject = ['$scope'];
 
 function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
     // var that = this;
-    $scope.name = $scope.name || $attrs.name;
-    $scope.user = $scope.user || $attrs.user;
-    $scope.heading = $scope.heading || $attrs.heading;
+    // $scope.name = $scope.name || $attrs.name;
+    // $scope.user = $scope.user || $attrs.user;
+    // $scope.heading = $scope.heading || $attrs.heading;
     
     
     // this.getName = $scope.getName = function () {
