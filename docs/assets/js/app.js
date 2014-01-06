@@ -145,6 +145,7 @@ function SidebarnavCtrl($scope) {
 SidebarnavCtrl.$inject = ['$scope'];
 
 function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
+    $scope.items = $scope.items || [];
     // var that = this;
     // $scope.name = $scope.name || $attrs.name;
     // $scope.user = $scope.user || $attrs.user;
@@ -162,7 +163,7 @@ function NavbarCtrl($scope, $timeout, $http, $location, $attrs) {
     // };
     
     this.select = $scope.select = function (item) {
-        angular.forEach(items, function (item) {
+        angular.forEach($scope.items, function (item) {
             item.selected = false;
         });
         item.selected = true;
