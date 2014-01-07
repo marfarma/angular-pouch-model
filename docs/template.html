@@ -26,11 +26,11 @@
          ================================================== -->
         <div class="row main-row" ng-controller="SidebarnavCtrl">
 
-            <div class="col-md-3 sidebar nav nav-list nav-list-panel nav-list-panel-square">
-                <div ng-repeat="item in items" class="list-group-item">
+            <ul class="col-md-3 sidebar nav nav-list nav-list-panel nav-list-panel-square">
+                <li ng-repeat="item in items">
                     <a scroll-to="{{item.id}}">{{item.text}}</a>
-                </div>
-            </div>
+                </li>
+            </ul>
 
             <!-- body block -->
             <div class="col-md-9 main-content">
