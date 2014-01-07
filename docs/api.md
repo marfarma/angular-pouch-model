@@ -1,7 +1,7 @@
 
-# Model API
+# Persistance API
 
-The library exposes a simple API.
+The library exposes a simple persistence API.
 
 ## Register Object Types
 
