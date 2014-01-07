@@ -28,6 +28,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   padding-top: 20px;
 }
 
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+}
+
 /* Tablets and up */
 @media screen and (min-width: 768px) {
 

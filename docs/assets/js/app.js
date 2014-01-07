@@ -185,7 +185,7 @@ directive('addClasses', function($compile) {
         angular.forEach(tables, function (table) {
             table.classList.add("table-bordered");
             table.classList.add("table-bordered-square");
-            console.log(table);
+            table.classList.add("center");
         });
         $compile(element.contents())($scope);
     }
