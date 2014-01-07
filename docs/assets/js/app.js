@@ -155,7 +155,7 @@ directive('sidebarNav', function($compile) {
             item.text = header.innerText;
             $scope.items.push(item);
         });
-        $compile(element.content())($scope);
+        $compile(element.contents())($scope);
     }
   };
 }).
