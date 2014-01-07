@@ -181,9 +181,11 @@ directive('addClasses', function($compile) {
     restrict: 'A',
     link: function ($scope, element) {
 
-        var tables = angular.element(document.querySelector('#global table')); 
+        var tables = document.querySelectorAll('table');
         console.log(tables);
-        angular.forEach(tables, function (table) {
+        angular.forEach(tables, function (elem) {
+            var table = angular.element(elem);
+            console.log(table);
             table.addclass("table-bordered table-bordered-square");
         });
         $compile(element.contents())($scope);
