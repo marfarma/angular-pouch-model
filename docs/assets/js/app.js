@@ -152,13 +152,11 @@ directive('sidebarNav', function($compile) {
         linkTop.appendChild(holder)
         
         angular.forEach(headers, function (header) {
-            console.log(header.innerHTML+'<small><a scroll-to="">(return to top)</a></small>');
-            header.innerHTML = header.innerHTML+'<small><a scroll-to="">(return to top)</a></small>';
-            // add id and go to top link to each section header element
+            // add id and "top" link to each section header element
+            header.innerHTML = header.innerHTML+' <small><a scroll-to=""> (top)</a></small>';
             header.id = "section" + index++;
-            //header.append(element.clone(frag));
-            //$compile(header)($scope);
             
+            // collect details for sidebar nav (ngRepeat in html)
             var item = new Object();
             item.id = header.id;
             item.text = header.innerText;
