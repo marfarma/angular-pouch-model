@@ -1,1 +1,1 @@
-include="{$include,.gitignore}"
+include="{$include,.gitignore,.nojekyll}"
