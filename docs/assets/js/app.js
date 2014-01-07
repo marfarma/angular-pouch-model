@@ -145,14 +145,14 @@ directive('sidebarNav', function($compile) {
         $scope.items = [];
         
         // create 'go to top' fragment
-        var frag = document.createDocumentFragment();
+        var linkTop = document.createDocumentFragment();
         var html = '<small><a scroll-to="">(return to top)</a></small>';
         var holder = document.createElement("small")
         holder.innerHTML = html
-        frag.appendChild(holder)
+        linkTop.appendChild(holder)
         
         angular.forEach(headers, function (header) {
-            console.log(header);
+            console.log(header.innerHTML);
             // add id and go to top link to each section header element
             header.id = "section" + index++;
             //header.append(element.clone(frag));
