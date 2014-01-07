@@ -23,6 +23,7 @@ Supports callbacks to be executed on model create, update or destroy events.  Th
 | ------------- |---------------| -----------------|
 | before_create | before_update | before_destroy   |
 | after_create  | after_update  | after_destroy    |
+| ------------- |---------------| -----------------|
 
 
 Note: `around` callbacks (i.e. - `around_create`, `around_update`, `around_destroy`) are not implemented
