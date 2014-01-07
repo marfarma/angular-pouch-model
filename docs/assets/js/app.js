@@ -74,7 +74,8 @@ angular.module("ngScrollTo",[])
 
         var document = $window.document;
 
-        function scrollInto(idOrName) {//find element with the give id of name and scroll to the first element it finds
+        function scrollInto(idOrName) {
+            //find element with the give id of name and scroll to the first element it finds
           if(!idOrName)
             $window.scrollTo(0, 0);
           //check if an element can be found with id attribute
@@ -146,6 +147,7 @@ directive('sidebarNav', function($compile) {
         angular.forEach(headers, function (header) {
             var item = new Object();
             header.id = "section" + index++;
+            header.append("<small><a scroll-to="">(return to top)</a></small>");
             item.id = header.id;
             item.text = header.innerText;
             $scope.items.push(item);
@@ -157,20 +159,13 @@ directive('pageHeading', function($compile) {
   return {
     restrict: 'A',
     link: function ($scope, element) {
+
         var header = angular.element(document.querySelector('#global h1:first-of-type')); 
         var paragraph = angular.element(document.querySelector('#global p:first-of-type'));
-        //*[@id="global"]/div/p[1]
-        console.log(paragraph);
-        console.log(element); 
 
         // copy elements & add to heading
         element.append(header);
         element.append(paragraph);
-        console.log(element); 
-        
-        // remove elements from #global
-        // header.remove();
-        // paragraph.remove();
         
     }
   };
