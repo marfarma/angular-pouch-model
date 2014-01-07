@@ -1,10 +1,10 @@
 # Angular Pouch Model
 
-A promised based, $digest aware, NoSQL object persistence library for Angularjs app using PouchDB in the browser.
+A promised based, $digest aware, NoSQL object persistence library for Angularjs applications using PouchDB in the browser.
 
 ## Simple Persistence, _Plus_
 
-Inspired by Rail's ActiveModel, Angular Pouch Model provides NoSQL object persistence using a local in-browser PouchDB. In addition to Angularjs $digest aware CRUD methods to persist objects, the library also supports:
+Inspired by Rail's ActiveModel, Angular Pouch Model provides NoSQL object persistence with a local in-browser PouchDB. In addition to Angularjs $digest aware CRUD methods, the library also supports:
 
 ### Declarative Model Validations
 
