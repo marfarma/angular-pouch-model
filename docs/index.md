@@ -17,17 +17,13 @@ GQL is a SQL-like language for retrieving entities or keys from a datastore.  GQ
 
 ### Event Hooks
 
-Supports callbacks to be executed on model create, update or destroy events.  These callbacks allow you to cascade deletions, eager load related data, enrich a model data with the results of a remote api call, etc.
-
+Supports callbacks to be executed on model create, update or destroy events.  These callbacks allow you to cascade deletions, eager load related data, enrich a model data with the results of a remote api call, etc.  Note: `around` callbacks (i.e. - `around_create`, `around_update`, `around_destroy`) are not implemented
 
 | Create        | Update        | Destroy          |
 | ------------- |---------------| -----------------|
 | before_create | before_update | before_destroy   |
 | after_create  | after_update  | after_destroy    |
 
-<div></div>
-
-Note: `around` callbacks (i.e. - `around_create`, `around_update`, `around_destroy`) are not implemented
 
 ## Versioning
 
