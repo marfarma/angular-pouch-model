@@ -1,4 +1,19 @@
 'use strict';
+
+//Adjust body and .anchortarget so that navbar doesn't cover up anchor
+//http://stackoverflow.com/questions/20691063/jquery-set-height-of-variable-height-navbar-for-body-and-class-used-on-anchors-s
+$(window).on('resize load', function() {
+    $('body').css({
+        "padding-top": $(".navbar").height() + "px"
+    });
+
+    $('.anchortarget').css({
+        "padding-top": $(".navbar").height() + "px"
+    }, {
+        "margin-top": $(".navbar").height() - "px"
+    });
+
+});
 /*
  * DOMParser HTML extension
  * 2012-09-04
