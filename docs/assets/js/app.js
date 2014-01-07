@@ -184,6 +184,7 @@ directive('addClasses', function($compile) {
         var tables = document.querySelectorAll('table');
         angular.forEach(tables, function (table) {
             table.classList.add("table");
+            table.classList.add("table-background");
             table.classList.add("table-bordered");
             table.classList.add("table-bordered-square");
             table.classList.add("center");
