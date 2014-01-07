@@ -17,3 +17,17 @@
 .bf-docs-section + .bf-docs-section {
   padding-top: 20px;
 }
+
+/* Tablets and up */
+@media screen and (min-width: 768px) {
+
+  .bf-header {
+    font-size: 21px;
+    text-align: left;
+  }
+  .bf-header h1 {
+    font-size: 60px;
+    line-height: 1;
+  }
+  
+}
