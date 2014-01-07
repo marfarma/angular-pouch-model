@@ -1,3 +1,13 @@
+body {
+  position: relative; /* For scrollyspy */
+  padding-top: 50px; /* Account for fixed navbar */
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  /*font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;  
+}
+
 /* Page headers */
 .bf-header {
   padding: 30px 30px 40px;
@@ -31,3 +41,13 @@
   }
   
 }
+
+/* Tablets/desktops and up */
+@media screen and (min-width: 992px) {
+  .bf-header h1,
+  .bf-header p {
+    margin-right: 380px;
+  }
+}
+
+
