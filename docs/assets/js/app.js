@@ -158,11 +158,14 @@ directive('pageHeading', function($compile) {
     restrict: 'A',
     link: function ($scope, element) {
         var header = angular.element(document.querySelector('#global h1:nth-child(1)')); 
-        var paragraph = angular.element(document.querySelector('#global p:nth-child(1)')); 
+        var paragraph = angular.element(document.querySelector('#global p:nth-child(1)'));
+        console.log(paragraph);
+        console.log(element); 
 
         // copy elements & add to heading
         element.append(header);
         element.append(paragraph);
+        console.log(element); 
         
         // remove elements from #global
         // header.remove();
