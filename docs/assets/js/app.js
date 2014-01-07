@@ -146,14 +146,15 @@ directive('sidebarNav', function($compile) {
         angular.forEach(headers, function (header) {
             // add id and go to top link to each section header element
             header.id = "section" + index++;
-            header.innerHtml +=  '<small><a scroll-to="">(return to top)</a></small>';
+            var html = header.innerHtml + '<small><a scroll-to="">(return to top)</a></small>';
+            header.html(html);
+            $compile(header)($scope);
             
             var item = new Object();
             item.id = header.id;
             item.text = header.innerText;
             $scope.items.push(item);
         });
-        $compile(element.contents())($scope);
     }
   };
 }).
