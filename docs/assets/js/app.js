@@ -152,7 +152,32 @@ directive('sidebarNav', function($compile) {
         });
     }
   };
+}).
+directive('pageHeading', function($compile) {
+  return {
+    restrict: 'A',
+    controller: 'PageHeadingCtrl',
+    link: function ($scope, element) {
+        var header = angular.element(document.querySelector('#global h1:nth-child(1)')); 
+        var paragraph = angular.element(document.querySelector('#global p:nth-child(1)')); 
+
+        // copy elements & add to heading
+        element.append(header);
+        element.append(paragraph);
+        
+        // remove elements from #global
+        // header.remove();
+        // paragraph.remove();
+        
+    }
+  };
 });
+
+function PageHeadingCtrl($scope) {
+    var h1 = $scope.h1 = $scope.$parent.h1;
+    var p = $scope.p = $scope.$parent.p;
+}
+PageHeadingCtrl.$inject = ['$scope'];
 
 function SidebarnavCtrl($scope) {
     var items = $scope.items = $scope.$parent.items;
