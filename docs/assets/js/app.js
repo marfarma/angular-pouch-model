@@ -157,8 +157,8 @@ directive('pageHeading', function($compile) {
   return {
     restrict: 'A',
     link: function ($scope, element) {
-        var header = angular.element(document.querySelector('#global h1:nth-child(1)')); 
-        var paragraph = angular.element(document.querySelector('#global div.p:nth-child(1)'));
+        var header = angular.element(document.querySelector('#global h1:first-of-type')); 
+        var paragraph = angular.element(document.querySelector('#global p:first-of-type'));
         //*[@id="global"]/div/p[1]
         console.log(paragraph);
         console.log(element); 
