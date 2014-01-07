@@ -145,8 +145,7 @@ directive('sidebarNav', function($compile) {
         $scope.items = [];
         
         angular.forEach(headers, function (header) {
-            // add id and "top" link to each section header element
-            header.innerHTML = header.innerHTML+' <small><a scroll-to=""> (top)</a></small>';
+            // add id to each section header element
             header.id = "section" + index++;
             
             // collect details for sidebar nav (ngRepeat in html)
@@ -154,6 +153,9 @@ directive('sidebarNav', function($compile) {
             item.id = header.id;
             item.text = header.innerText;
             $scope.items.push(item);
+            
+            // add "top" link to each element
+            header.innerHTML = header.innerHTML+' <small><a scroll-to=""> (top)</a></small>';
         });
         $compile(element.contents())($scope);
     }
