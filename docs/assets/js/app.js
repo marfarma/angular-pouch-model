@@ -187,7 +187,7 @@ directive('addClasses', function($compile) {
             table.classList.add("table-bordered-square");
             table.classList.add("center");
         });
-        $compile(element.contents())($scope);
+        //$compile(element.contents())($scope);
     }
   };
 });
