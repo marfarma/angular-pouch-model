@@ -19,10 +19,25 @@ GQL is a SQL-like language for retrieving entities or keys from a datastore.  GQ
 
 Supports callbacks to be executed on model create, update or destroy events.  These callbacks allow you to cascade deletions, eager load related data, enrich a model data with the results of a remote api call, etc.
 
-| Create        | Update        | Destroy          |
-| ------------- |---------------| -----------------|
-| before_create | before_update | before_destroy   |
-| after_create  | after_update  | after_destroy    |
+<table class="ng-scope table-bordered">
+<thead><tr>
+<th>Create</th>
+<th>Update</th>
+<th>Destroy</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>before_create</td>
+<td>before_update</td>
+<td>before_destroy</td>
+</tr>
+<tr>
+<td>after_create</td>
+<td>after_update</td>
+<td>after_destroy</td>
+</tr>
+</tbody>
+</table>
  
 Note: `around` callbacks (i.e. - `around_create`, `around_update`, `around_destroy`) are not implemented
 
