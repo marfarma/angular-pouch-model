@@ -140,14 +140,16 @@ directive('sidebarNav', function($compile) {
     restrict: 'A',
     controller: 'SidebarnavCtrl',
     link: function ($scope, element) {
-        // add id to each element
         var headers = element.find('h2');
         var index = 1;
         $scope.items = [];
         angular.forEach(headers, function (header) {
-            var item = new Object();
+            // add id and go to top link to each section header element
             header.id = "section" + index++;
-            header.append("<small><a scroll-to="">(return to top)</a></small>");
+            header.innerHtml +=  "<small><a scroll-to="">(return to top)</a></small>";
+            $compile(header.contents())($scope);
+            
+            var item = new Object();
             item.id = header.id;
             item.text = header.innerText;
             $scope.items.push(item);
