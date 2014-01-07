@@ -183,8 +183,8 @@ directive('addClasses', function($compile) {
 
         var tables = document.querySelectorAll('table');
         angular.forEach(tables, function (table) {
-            table.classList.push("table-bordered");
-            table.classList.push("table-bordered-square");
+            table.classList.add("table-bordered");
+            table.classList.add("table-bordered-square");
             console.log(table);
         });
         $compile(element.contents())($scope);
