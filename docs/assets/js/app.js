@@ -175,6 +175,18 @@ directive('pageHeading', function($compile) {
         
     }
   };
+}).
+directive('addClasses', function($compile) {
+  return {
+    restrict: 'A',
+    link: function ($scope, element) {
+
+        var tables = angular.element(document.querySelector('#global table')); 
+        angular.forEach(tables, function (table) {
+            table.addclass("table-bordered table-bordered-square");
+        });
+    }
+  };
 });
 
 function SidebarnavCtrl($scope) {
