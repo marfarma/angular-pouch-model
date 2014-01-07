@@ -152,9 +152,10 @@ directive('sidebarNav', function($compile) {
         frag.appendChild(holder)
         
         angular.forEach(headers, function (header) {
+            console.log(header);
             // add id and go to top link to each section header element
             header.id = "section" + index++;
-            header.append(element.clone(frag));
+            //header.append(element.clone(frag));
             //$compile(header)($scope);
             
             var item = new Object();
