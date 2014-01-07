@@ -1,9 +1,9 @@
 
-#Angular Pouch Model API
+# Model API
 
-The public API consists of the following functions.
+The library exposes a simple API.
 
-## Register Object Prototypes
+## Register Object Types
 
 ```
 setType(type, fn) //register prototype
