@@ -3,7 +3,7 @@
 
 The public API consists of the following functions.
 
-## Register Object Prototypes <small><a scroll-to="">(return to top)</a></small>
+## Register Object Prototypes <span><a scroll-to="">(return to top)</a></span>
 
 ```
 setType(type, fn) //register prototype
