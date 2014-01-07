@@ -152,7 +152,8 @@ directive('sidebarNav', function($compile) {
         linkTop.appendChild(holder)
         
         angular.forEach(headers, function (header) {
-            console.log(header.innerHTML);
+            console.log(header.innerHTML+'<small><a scroll-to="">(return to top)</a></small>');
+            header.innerHTML = header.innerHTML+'<small><a scroll-to="">(return to top)</a></small>';
             // add id and go to top link to each section header element
             header.id = "section" + index++;
             //header.append(element.clone(frag));
