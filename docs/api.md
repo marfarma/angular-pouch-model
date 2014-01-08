@@ -2,6 +2,8 @@
 
 The library exposes a simple persistence API.
 
+## Table of Operations
+
 <table> 
 <thead> 
 <tr> 
