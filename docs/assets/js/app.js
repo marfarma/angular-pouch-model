@@ -155,27 +155,19 @@ directive('sidebarNav', function($compile) {
         
         for ( var i=0 ; i < headers.snapshotLength; i++ )
         {
-          console.log( headers.snapshotItem(i) );
+          var header =  headers.snapshotItem(i);
+          // add id to each section header element
+          header.id = "section" + index++;
+          // collect details for sidebar nav (ngRepeat in html)
+          var item = new Object();
+          item.id = header.id;
+          item.text = header.innerText;
+          $scope.items.push(item);
+          
+          // add "top" link to each element
+          header.innerHTML = header.innerHTML+' <small><a scroll-to=""> (top)</a></small>';
         }
-        
-        
-        
-        var header = headers.iterateNext();
-
-        while (header) {
-            // add id to each section header element
-            header.id = "section" + index++;
-            // collect details for sidebar nav (ngRepeat in html)
-            var item = new Object();
-            item.id = header.id;
-            item.text = header.innerText;
-            $scope.items.push(item);
-            
-            // add "top" link to each element
-            header.innerHTML = header.innerHTML+' <small><a scroll-to=""> (top)</a></small>';
-            header = headings.iterateNext();
-        }
-        
+                
         // angular.forEach(headers, function (header) {
         //     // add id to each section header element
         //     header.id = "section" + index++;
