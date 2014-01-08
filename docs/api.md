@@ -105,67 +105,67 @@ What level of documentation would you want for something like this? I've seen so
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.new</code></td>
+    <td><pre><code>db.new</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.bulk_new</code></td>
+    <td><pre><code>db.bulk_new</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.save</code></td>
+    <td><pre><code>db.save</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.bulk_save</code></td>
+    <td><pre><code>db.bulk_save</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.destroy</code></td>
+    <td><pre><code>db.destroy</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.bulk_destroy</code></td>
+    <td><pre><code>db.bulk_destroy</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.exists?</code></td>
+    <td><pre><code>db.exists?</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.find</code></td>
+    <td><pre><code>db.find</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.find_by</code></td>
+    <td><pre><code>db.find_by</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.find_or_save_by</code></td>
+    <td><pre><code>db.find_or_save_by</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.first</code></td>
+    <td><pre><code>db.first</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.first_or_save</code></td>
+    <td><pre><code>db.first_or_save</code></pre></td>
 </tr>
 <tr>
     <td></td> 
     <td></td> 
-    <td><code>db.last</code></td>
+    <td><pre><code>db.last</code></pre></td>
 </tr>
 </tbody> 
 </table>
