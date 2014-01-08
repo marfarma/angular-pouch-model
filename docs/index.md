@@ -6,7 +6,11 @@ A promised based, $digest aware, NoSQL object persistence library for Angularjs 
 
 Inspired by Rail's ActiveModel, Angular Pouch Model provides NoSQL object persistence with a local in-browser PouchDB. In addition to Angularjs $digest aware CRUD methods, the library also supports:
 
-### Declarative Model Validations
+### ODM of Plain-Old-Javascript-Objects
+
+Angular Pouch Model seeks to be easy to use, imposing the minimum overhead possible in order to persist javascript objects using PouchDB.
+
+### Declarative Validations
 
 - When save validations fail, create and update operations fail.
 - When destroy validations fail, delete operations fail.
