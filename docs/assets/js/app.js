@@ -180,7 +180,7 @@ directive('addClasses', function($compile) {
   return {
     restrict: 'A',
     link: function ($scope, element) {
-
+        // `bootstapify` tables in content area
         var tables = document.querySelectorAll('table');
         angular.forEach(tables, function (table) {
             table.classList.add("table");
@@ -188,9 +188,8 @@ directive('addClasses', function($compile) {
             table.classList.add("table-background");
             table.classList.add("table-bordered");
             table.classList.add("table-bordered-square");
-            table.classList.add("center");
+            //table.classList.add("center");
         });
-        //$compile(element.contents())($scope);
     }
   };
 });
