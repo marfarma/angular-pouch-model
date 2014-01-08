@@ -64,6 +64,9 @@ $(window).on('resize load', function() {
 	};
 }(DOMParser));
 
+var getAllElementByXpath = function (dom, path) {
+    return dom.evaluate(path, dom, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).singleNodeValue;
+};
 var getElementByXpath = function (dom, path) {
     return dom.evaluate(path, dom, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 };
@@ -145,7 +148,7 @@ directive('sidebarNav', function($compile) {
     link: function ($scope, element) {
         
         var  itemsXpath = '//*[@id="global"]/div/h2 | //*[@id="global"]/div/table/tbody/tr/td[1]/div';  
-        var headers = getElementByXpath(document,itemsXpath);
+        var headers = getAllElementByXpath(document,itemsXpath);
         var index = 1;
         $scope.items = [];
         
