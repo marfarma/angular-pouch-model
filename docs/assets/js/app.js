@@ -65,7 +65,7 @@ $(window).on('resize load', function() {
 }(DOMParser));
 
 var getAllElementByXpath = function (dom, path) {
-    return dom.evaluate(path, dom, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null).singleNodeValue;
+    return dom.evaluate(path, dom, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
 };
 var getElementByXpath = function (dom, path) {
     return dom.evaluate(path, dom, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
