@@ -143,14 +143,15 @@ directive('sidebarNav', function($compile) {
     restrict: 'A',
     controller: 'SidebarnavCtrl',
     link: function ($scope, element) {
-        var headers = element.find('h2');
+        
+        var  itemsXpath = '//*[@id="global"]/div/h2 | //*[@id="global"]/div/table/tbody/tr/td[1]/div';  
+        var headers = getElementByXpath(element,itemsXpath);
         var index = 1;
         $scope.items = [];
         
         angular.forEach(headers, function (header) {
             // add id to each section header element
             header.id = "section" + index++;
-            
             // collect details for sidebar nav (ngRepeat in html)
             var item = new Object();
             item.id = header.id;
