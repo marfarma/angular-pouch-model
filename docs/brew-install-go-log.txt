@@ -18,3 +18,123 @@ zsh completion has been installed to:
   /usr/local/share/zsh/site-functions
 ==> Summary
 🍺  /usr/local/Cellar/go/1.2: 3980 files, 115M
+
+
+API & Documentation Notes
+
+a Document-Object mapper which allows JavaScript objects to be saved and loaded into the database in a type-safe way.
+
+
+- (Array)                       all(query = Undefined)                                           Find a set of records matching an optional set of conditions.
+- (Object)                      create(attributes = {})                                          Create a Object.
+- (Object)                      create!(attributes = {})                                         Create a Object, bypassing hooks.
+- (Boolean)                     destroy                                                          Remove all Resources from the repository.
+- (Boolean)                     destroy!                                                         Remove all Resources from the repository, bypassing validation.
+- (Object, Array)               first(*args)                                                     Return the first Object or the first N Resources for the Model with an optional query.
+- (Object)                      first_or_create(conditions = {}, attributes = {})                Finds the first Object by conditions, or creates a new Object with the attributes if none found.
+- (Object)                      first_or_new(conditions = {}, attributes = {})                   Finds the first Object by conditions, or initializes a new Object with the attributes if none found.
+- (Object?)                     get(*key)                                                        Grab a single record by its key.
+- (Object)                      get!(*key)                                                       Grab a single record just like #get, but raise an ObjectNotFoundError if the record doesn't exist.
+- (Object, Array)               last(*args)                                                      Return the last Object or the last N Resources for the Model with an optional query.
+- (Boolean)                     update(attributes)                                               Update every Object.
+- (Boolean)                     update!(attributes)                                              Update every Object, bypassing validations.
+
+
+
+
+
+# If you want the logs displayed you have to do this before the call to setup
+  DataMapper::Logger.new($stdout, :debug)
+
+  # An in-memory Sqlite3 connection:
+  DataMapper.setup(:default, 'sqlite::memory:')
+
+  # A Sqlite3 connection to a persistent database
+  DataMapper.setup(:default, 'sqlite:///path/to/project.db')
+
+  # A MySQL connection:
+  DataMapper.setup(:default, 'mysql://user:password@hostname/database')
+
+  # A Postgres connection:
+  DataMapper.setup(:default, 'postgres://user:password@hostname/database')
+  
+  
+
+If you want to create a new resource with some given attributes and then save it all in one go, you can use the #create method.
+
+@post = Post.create(
+  :title      => "My first DataMapper post",
+  :body       => "A lot of text ...",
+  :created_at => Time.now
+)
+
+If the creation was successful, #create will return the newly created DataMapper::Resource. If it failed, it will return a new resource that is initialized with the given attributes and possible default values declared for that resource, but that's not yet saved. To find out wether the creation was successful or not, you can call #saved? on the returned resource. It will return true if the resource was successfully persisted, or false otherwise.
+
+If you want to either find the first resource matching some given criteria or just create that resource if it can't be found, you can use #first_or_create.
+
+Save
+We can also create a new instance of the model, update its properties and then save it to the data store. The call to #save will return true if saving succeeds, or false in case something went wrong.
+
+Just like #create has an accompanying #first_or_create method, #new has its #first_or_new counterpart as well. The only difference with #first_or_new is that it returns a new unsaved resource in case it couldn't find one for the given query criteria. Apart from that, #first_or_new behaves just like #first_or_create and accepts the same parameters. 
+
+Destroy
+To destroy a record, you simply call its #destroy method. It will return true or false depending if the record is successfully deleted or not. Here is an example of finding an existing record then destroying it.
+
+1 zoo = Zoo.get(5)
+2 zoo.destroy  # => true
+You can also use #destroy to do mass deletes on a model. In the previous examples we've used DataMapper::Resource#destroy to destroy a single resource. We can also use DataMapper::Model#destroy which is available as a class method on our models. Calling it will remove all instances of that model from the repository.
+
+1 Zoo.destroy
+This will delete all Zoo instances from the repository. Internally it does the equivalent of:
+
+1 Zoo.all.destroy
+This shows that actually, #destroy is also available on any DataMapper::Collection and performs a mass delete on that collection when being called. You typically retrieve a DataMapper::Collection from either a call to SomeModel.all or a call to a relationship accessor for any 1:n or m:n relationship.
+
+Talking to your datastore directly
+Sometimes you may find that you need to execute a non-query task directly against your database. For example, performing bulk inserts might be such a situation.
+
+The following snippet shows how to insert multiple records with only one statement on MySQL. It may not work with other databases but it should give you an idea of how to execute non-query statements against your own database of choice.
+
+1 adapter = DataMapper.repository(:default).adapter
+2 # Insert multiple records with one statement (MySQL)
+3 adapter.execute("INSERT INTO zoos (id, name) VALUES (1, 'Lion'), (2, 'Elephant')")
+4 # The interpolated array condition syntax works as well:
+5 adapter.execute('INSERT INTO zoos (id, name) VALUES (?, ?), (?, ?)', 1, 'Lion', 2, 'E
+
+
+
+# Or new gives you it back unsaved, for more operations
+@post = Post.new(:title => ..., ...)
+@post.save                           # persist the resource
+
+
+
+Projecting only specific properties
+In order to not select all of your model's properties but only a subset of them, you can pass :fields => [:desired, :property, :names] in your queries.
+
+Talking directly to your data-store
+Sometimes you may find that you need to tweak a query manually.
+
+1 zoos = repository(:default).adapter.select('SELECT name, open FROM zoos WHERE open = 1')
+2 #      Note that this will not return Zoo objects, rather the raw data straight from the database
+zoos will be full of Struct objects with name, and open attributes, rather than instances of the Zoo class. They'll also be read-only. You can still use the interpolated array condition syntax as well:
+
+designed to persist POCO classes with a minimal amount of intrusion and configuration
+
+Simplicity - typed, wrist friendly API for common data access patterns
+
+Create/Drop DB Table schemas using nothing but POCO class definitions (IOTW a true code-first ORM)
+There should be no surprising or hidden behaviour. Any non-scalar properties (i.e. complex types) are text blobbed in a schema-less text field using .NET's fastest Text Serializer. Effectively this allows you to create a table from any POCO type and it should persist as expected in a DB Table with columns for each of the classes 1st level public properties.
+
+POCO serialization for frameworks that support pulling static typed objects from the DB. Using raw SQL.
+
+MongoEngine is a Document-Object Mapper (think ORM, but for document databases) for working with MongoDB from Python.
+
+It uses a simple declarative API, similar to the Django ORM.
+
+Documentation available at docs.mongoengine.org - there is currently atutorial, a user guide and API reference.
+
+
+
+Implemented as a repository in order to have the least impact on your javascript objects.  Unlike frameworks that provide a base model object that you extend to create your application models, the framework acts as a repository persisting previously registered object types passed as parameters to it's various methods.
+
