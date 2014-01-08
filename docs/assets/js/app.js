@@ -147,12 +147,13 @@ directive('sidebarNav', function($compile) {
     controller: 'SidebarnavCtrl',
     link: function ($scope, element) {
         
-        var  itemsXpath = '//*[@id="global"]/div/h2 | //*[@id="global"]/div/table/tbody/tr/td[1]/div';  
-        var headers = getAllElementByXpath(document,itemsXpath);
         var index = 1;
         $scope.items = [];
-        
-        angular.forEach(headers, function (header) {
+        var  itemsXpath = '//*[@id="global"]/div/h2 | //*[@id="global"]/div/table/tbody/tr/td[1]/div';  
+        var headers = getAllElementByXpath(document,itemsXpath);
+        var header = headers.iterateNext();
+
+        while (header) {
             // add id to each section header element
             header.id = "section" + index++;
             // collect details for sidebar nav (ngRepeat in html)
@@ -163,7 +164,21 @@ directive('sidebarNav', function($compile) {
             
             // add "top" link to each element
             header.innerHTML = header.innerHTML+' <small><a scroll-to=""> (top)</a></small>';
-        });
+            header = headings.iterateNext();
+        }
+        
+        // angular.forEach(headers, function (header) {
+        //     // add id to each section header element
+        //     header.id = "section" + index++;
+        //     // collect details for sidebar nav (ngRepeat in html)
+        //     var item = new Object();
+        //     item.id = header.id;
+        //     item.text = header.innerText;
+        //     $scope.items.push(item);
+        //     
+        //     // add "top" link to each element
+        //     header.innerHTML = header.innerHTML+' <small><a scroll-to=""> (top)</a></small>';
+        // });
         $compile(element.contents())($scope);
     }
   };
