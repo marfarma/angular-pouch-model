@@ -12,7 +12,7 @@ The library exposes a simple persistence API.
 </thead> 
 <tbody> 
     <tr>
-        <td><h2>Register Object Prototype with Library</h2></td> 
+        <td><h3>Register Object Prototype with Library</h3></td> 
         <td></td> 
         <td><pre><code>db.setType(type, fn)</code></pre></td>
     </tr>
