@@ -145,7 +145,7 @@ directive('sidebarNav', function($compile) {
     link: function ($scope, element) {
         
         var  itemsXpath = '//*[@id="global"]/div/h2 | //*[@id="global"]/div/table/tbody/tr/td[1]/div';  
-        var headers = getElementByXpath(element,itemsXpath);
+        var headers = getElementByXpath(document,itemsXpath);
         var index = 1;
         $scope.items = [];
         
