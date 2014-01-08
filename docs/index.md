@@ -4,11 +4,62 @@ A promised based, $digest aware, NoSQL object persistence library for Angularjs 
 
 ## Simple Persistence, _Plus_
 
-Inspired by Rail's ActiveModel, Angular Pouch Model provides NoSQL object persistence with a local in-browser PouchDB. In addition to Angularjs $digest aware CRUD methods, the library also supports:
+Angular Pouch Model (APM) provides NoSQL object persistence with a local in-browser PouchDB. In addition to Angularjs $digest aware CRUD methods, the library also supports:
 
-### ODM of Plain-Old-Javascript-Objects
+### Persist Plain Old JavaScript Objects (POJOs)
 
-Angular Pouch Model seeks to be easy to use, imposing the minimum overhead possible in order to persist javascript objects using PouchDB.
+APM works with the POJOs you already have. With APM, given an existing Prototype, adding PouchDB 
+persistence requires two lines of code.
+
+    var Cat = function() {
+        var cat = {};
+        cat.name = '';
+        
+        // may have functions
+        cat.toString = function(){ 
+            return "I'm a cat and my name is " + name;
+        };
+        
+        // may have complex object or array properties
+        cat.description = {color:"black",
+                           size:"fat"}; 
+        
+        cat.apm_type = 'Cat';                          // 1. add property apm_type
+        return cat; 
+    };
+    apmDb.setType('Cat',Cat);                          // 2. register Prototype with the module
+ 
+create and persist your objects, in the context of an Angular controller, for example:
+    
+    $scope.kitty = apmDb.new('Cat',{ name: 'Zildjian' });
+    
+    $scope.saveClickCB = function() {                  // save returns an angular.$q promise
+        $scope.kitty = apmDb.save($scope.kitty)        // and is angular.$digest aware                                                       
+        .then(function(reason){          
+            $scope.kitty.errors = reason;              // application defined
+            return $scope.kitty;
+        },function(result){     
+            if (result.errors) {                       // application defined 
+                Object.delete(result.errors); 
+            }
+            return result;
+        });
+    };
+    
+Other document object mapping solutions won't persist POJOs (plain old JavaScript objects).
+You have to replace them with objects extended from their base model, for example
+using Mongoose, you'd define and save a Cat as follows:
+
+    var Cat = mongoose.model('Cat', { name: String }); // replace your existing POJO
+
+    var kitty = new Cat({ name: 'Zildjian' });
+    kitty.save(function (err) {                        // async save method
+      if (err) // ...
+      console.log('meow');
+    });
+    
+Note: Mongoose's save method neither returns a promise nor is Angular.$digest aware. Recommended 
+practice for Angular applications is to wrap Mongoose method calls with a service.
 
 ### Declarative Validations
 
