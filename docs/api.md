@@ -2,16 +2,6 @@
 
 The library exposes a simple persistence API.
 
-## Register Object Types
-
-```
-setType(type, fn) //register prototype
-```
-
-I'm considering releasing a library as a bower module. Are there issues with code quality, missing test cases, that need to be addressed first? Perhaps it's not a good candidate for public release. If so, why not?
-
-What level of documentation would you want for something like this? I've seen some open source modules publish annotated source, in addition to API documentation. Is annotated source documentation overkill for something like this?
-
 <table> 
 <thead> 
 <tr> 
@@ -21,6 +11,11 @@ What level of documentation would you want for something like this? I've seen so
 </tr> 
 </thead> 
 <tbody> 
+    <tr>
+        <td><h2>Register Object Prototype with Library</h2></td> 
+        <td></td> 
+        <td><pre><code>db.setType(type, fn)</code></pre></td>
+    </tr>
 <tr>
     <td></td> 
     <td></td> 
