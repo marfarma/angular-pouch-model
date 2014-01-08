@@ -155,7 +155,7 @@ directive('sidebarNav', function($compile) {
         
         for ( var i=0 ; i < headers.snapshotLength; i++ )
         {
-          dump( headers.snapshotItem(i) );
+          console.log( headers.snapshotItem(i) );
         }
         
         
