@@ -1,4 +1,3 @@
-
 # Persistance API
 
 The library exposes a simple persistence API.
@@ -94,4 +93,80 @@ I'm considering releasing a library as a bower module. Are there issues with cod
 What level of documentation would you want for something like this? I've seen some open source modules publish annotated source, in addition to API documentation. Is annotated source documentation overkill for something like this?
 
 
+<table> 
+<thead> 
+<tr> 
+    <th>Operation</th> 
+    <th>Description</th> 
+    <th>Example</th> 
+</tr> 
+</thead> 
+<tbody> 
+<tr>
+    <td>db.new</td>
+    <td></td> 
+    <td></td> 
+</tr>
+<tr>
+    <td>db.bulk_new</td>
+    <td></td> 
+    <td></td> 
+</tr>
+<tr>
+    <td>db.save</td>
+    <td></td> 
+    <td></td> 
+</tr.>
+<tr.>
+    <td>db.bulk_save</td>
+    <td></td> 
+    <td></td> 
+</tr>
+<tr>
+    <td>db.destroy</td>
+    <td></td> 
+    <td></td> 
+</tr>
+<tr>
+    <td>db.bulk_destroy</td>
+    <td></td> 
+    <td></td> 
+</tr>
+<tr>
+    <td>db.exists?</td>
+    <td></td> 
+    <td></td> 
+</tr>
+<tr>
+    <td>db.find</td>
+    <td></td> 
+    <td></td> 
+</tr>
+<tr>
+    <td>db.find_by</td>
+    <td></td> 
+    <td></td> 
+</tr>
+<tr>
+    <td>db.find_or_save_by</td>
+    <td></td> 
+    <td></td> 
+</tr>
+<tr>
+    <td>db.first</td>
+    <td></td> 
+    <td></td> 
+</tr>
+<tr>
+    <td>db.first_or_save</td>
+    <td></td> 
+    <td></td> 
+</tr>
+<tr>
+    <td>db.last</td>
+    <td></td> 
+    <td></td> 
+</tr>
+</tbody> 
+</table>
 
