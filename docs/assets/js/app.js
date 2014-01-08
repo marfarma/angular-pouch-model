@@ -151,6 +151,15 @@ directive('sidebarNav', function($compile) {
         $scope.items = [];
         var  itemsXpath = '//*[@id="global"]/div/h2 | //*[@id="global"]/div/table/tbody/tr/td[1]/div';  
         var headers = getAllElementByXpath(document,itemsXpath);
+        
+        
+        for ( var i=0 ; i < headers.snapshotLength; i++ )
+        {
+          dump( headers.snapshotItem(i) );
+        }
+        
+        
+        
         var header = headers.iterateNext();
 
         while (header) {
