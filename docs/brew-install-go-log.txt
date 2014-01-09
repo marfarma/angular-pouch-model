@@ -40,6 +40,38 @@ a Document-Object mapper which allows JavaScript objects to be saved and loaded 
 - (Boolean)                     update!(attributes)                                              Update every Object, bypassing validations.
 
 
+Data Mapper approach allows me to design the object model independently of the database with Test Driven Development more efficiently than an Active Record solution could. This is important to teams that want to take an incremental approach to design because it allows a team to work through the design in the object model first where refactoring tools and unit testing techniques are generally more effective, then create the database model later when the object model is stable. 
+
+Here the Foo class is a lot simpler and only has to worry about its own business logic. Not only does it not have to persist its own data, it doesn't even know or care whether its data is persisted at all. The FooMapper class doesn't contain any business logic, but it does handle the data persistence, and all of the SQL is tucked away in the mapper class. 
+
+Perpetuity is a simple Ruby object persistence layer that attempts to follow Martin Fowler's Data Mapper pattern, allowing you to use plain-old Ruby objects in your Ruby apps in order to decouple your domain logic from the database as well as speed up your tests. There is no need for your model classes to inherit from another class or even include a mix-in.
+
+Your objects will hopefully eventually be able to be persisted into whichever database you like. Right now, only MongoDB is supported. There is also a PostgreSQL adapter under heavy development (nearly up-to-date with the MongoDB adapter). Other persistence solutions will come later.
+
+How it works
+
+In the Data Mapper pattern, the objects you work with don't understand how to persist themselves. They interact with other objects just as in any other object-oriented application, leaving all persistence logic to mapper objects. This decouples them from the database and allows you to write your code without it in mind.
+
+Data Mapper
+An alternative and probably more ideal approach is the data mapper pattern defined in Martin Fowler's EAA Catalog:
+
+The Data Mapper is a layer of software that separates the in-memory objects from the database. Its responsibility is to transfer data between the two and also to isolate them from each other. With Data Mapper the in-memory objects needn't know even that there's a database present; they need no SQL interface code, and certainly no knowledge of the database schema.
+
+Compare this with a description of the Repository pattern:
+
+A system with a complex domain model often benefits from a layer, such as the one provided by Data Mapper (165), that isolates domain objects from details of the database access code. In such systems it can be worthwhile to build another layer of abstraction over the mapping layer where query construction code is concentrated. This becomes more important when there are a large number of domain classes or heavy querying. In these cases particularly, adding this layer helps minimize duplicate query logic.
+
+The MSDN article titled Persistence Patterns speaks of the Data Mapper pattern:
+
+Data Mapper is more appropriate for systems with complex domain logic where the shape of the domain model will diverge considerably from the database model. Data Mapper also decouples your domain model classes from the persistence store. That might be important for cases where you need to reuse the domain model with different database engines, schemas, or even different storage mechanisms altogether.
+
+In terms of isolation and testability, the Data Mapper pattern is similar to the Repository pattern. So, what's the key difference between Data Mapper and Repository?
+
+The repository builds on the foundations of the Data Mapper pattern but adds an "additional layer of abstraction over the mapping layer where query construction code is concentrated" in Fowler speak. I would describe this extra layer as a collection-like interface for querying domain objects via a querying format such as Linq.
+
+!!!!     http://underscorejs.org/#filter -- collection api
+
+
 
 
 
