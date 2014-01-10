@@ -4,9 +4,9 @@ A promised based, $digest aware, NoSQL object persistence library for Angularjs 
 
 ## Simple Persistence, _Plus_
 
-Angular Pouch Model (APM) provides NoSQL object persistence with a local in-browser PouchDB. In addition to Angularjs $digest aware CRUD methods, the library also supports:
+Angular Pouch Model (APM) provides NoSQL object persistence with a local in-browser PouchDB. It's primary focus in on serializing and rehydrating potentially complex object graphs.  In addition to Angularjs $digest aware CRUD methods, the library: 
 
-### Persist Plain Old JavaScript Objects (POJOs)
+### Persists Plain Old JavaScript Objects (POJOs)
 
 APM works with the POJOs you already have. With APM, given an existing Prototype, adding PouchDB 
 persistence requires two lines of code.
@@ -61,16 +61,16 @@ using Mongoose, you'd define and save a Cat as follows:
 Note: Mongoose's save method neither returns a promise nor is Angular.$digest aware. Recommended 
 practice for Angular applications is to wrap Mongoose method calls with a service.
 
-### Declarative Validations
+### Supports Declarative Validations
 
 - When save validations fail, create and update operations fail.
 - When destroy validations fail, delete operations fail.
 
-### Google Query Language
+### Enables Google Query Language
 
 GQL is a SQL-like language for retrieving entities or keys from a datastore.  GQL where conditions can be used as search criteria to return a set of model objects.  It can also be used to return an array of anonymous objects with properties as listed in the query select clause.
 
-### Event Hooks
+### Supports Model Event Hooks
 
 Assign callbacks to be executed on model create, update or destroy events.  Cascade deletions, eager load related data, enrich a model data with the results of a remote api call, etc.  Note: `around` callbacks (i.e. - `around_create`, `around_update`, `around_destroy`) are not implemented
 
@@ -79,6 +79,9 @@ Assign callbacks to be executed on model create, update or destroy events.  Casc
 | before_create | before_update | before_destroy   |
 | after_create  | after_update  | after_destroy    |
 
+### Includes An Identity Map
+
+In single-page apps JavaScript objects can be retained in the browser indefinitely, which compounds the risk of object identity issues behind difficult to diagnose bugs.  With an identity map, all retrieved objects are cached in memory, and any request will return a reference to the cached object if found.  
 
 ## Versioning
 

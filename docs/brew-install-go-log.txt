@@ -1,24 +1,9 @@
-As of go 1.2, a valid GOPATH is required to use the `go get` command:
-  http://golang.org/doc/code.html#GOPATH
+Ben Teese
+Topic: Rich Data Models & Angular
 
-`go vet` and `go doc` are now part of the go.tools sub repo:
-  http://golang.org/doc/go1.2#go_tools_godoc
+Super excited about Angular? Ready to change the world and build a super-heroic app? With directives, Angular has pretty much nailed it when it comes to interacting with the DOM. And plain-old Javascript objects as models? AWESOME! Wait, hang on. 
 
-To get `go vet` and `go doc` run:
-  go get code.google.com/p/go.tools/cmd/godoc
-  go get code.google.com/p/go.tools/cmd/vet
-
-You may wish to add the GOROOT-based install location to your PATH:
-  export PATH=$PATH:/usr/local/Cellar/go/1.2/libexec/bin
-
-Bash completion has been installed to:
-  /usr/local/etc/bash_completion.d
-
-zsh completion has been installed to:
-  /usr/local/share/zsh/site-functions
-==> Summary
-🍺  /usr/local/Cellar/go/1.2: 3980 files, 115M
-
+Say that you're building a app that has lots of business logic and interrelated data. For that sort of app, history shows us that a rich object model can often be the best place to put your logic and data relationships - from both a testing and ease-of-development perspective. That's the approach that frameworks like Ember advocate - but Ember forces you to extend on its own object model.
 
 API & Documentation Notes
 
