@@ -11,8 +11,9 @@ a Document-Object mapper which allows JavaScript objects to be saved and loaded 
 
 
 - (Array)                       all(query = Undefined)                                           Find a set of records matching an optional set of conditions.
-- (Object)                      create(attributes = {})                                          Create a Object.
-- (Object)                      create!(attributes = {})                                         Create a Object, bypassing hooks.
+- (Object)                      create(attributes = {})                                          Create a Object, auto saved to db
+- (Object)                      create!(attributes = {})                                         Create a Object, bypassing hooks, auto saved to db
+- (Object)                      new(attributes = {})                                             Create a Object.
 - (Boolean)                     destroy                                                          Remove all Resources from the repository.
 - (Boolean)                     destroy!                                                         Remove all Resources from the repository, bypassing validation.
 - (Object, Array)               first(*args)                                                     Return the first Object or the first N Resources for the Model with an optional query.

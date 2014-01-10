@@ -1,15 +1,17 @@
 # Angular Pouch Model
 
-A promised based, $digest aware, NoSQL object persistence library for Angularjs applications using PouchDB in the browser.
+A promised based, $digest aware, object persistence layer for Angularjs applications using PouchDB in the browser.
 
 ## Simple Persistence, _Plus_
 
-Angular Pouch Model (APM) provides NoSQL object persistence with a local in-browser PouchDB. It's primary focus in on serializing and rehydrating potentially complex object graphs.  In addition to Angularjs $digest aware CRUD methods, the library: 
+Angular Pouch Model is a simple JavaScript object persistence layer that attempts to follow a Data Mapper pattern, allowing you to use plain-old JavaScript objects decoupled from the document data store. There is no need for your objects to inherit from another class. The library acts as an Object Document Mapper and currently supports in-browser PouchDB.  
+
+## Features
 
 ### Persists Plain Old JavaScript Objects (POJOs)
 
-APM works with the POJOs you already have. With APM, given an existing Prototype, adding PouchDB 
-persistence requires two lines of code.
+APM works with the POJOs you already have. It's primary focus is on serializing and rehydrating potentially complex object graphs.  
+With APM, given an existing Prototype, adding PouchDB persistence requires two lines of code.
 
     var Cat = function() {
         var cat = {};
@@ -46,11 +48,10 @@ create and persist your objects, in the context of an Angular controller, for ex
         });
     };
     
-Other document object mapping solutions won't persist POJOs (plain old JavaScript objects).
-You have to replace them with objects extended from their base model, for example
-using Mongoose, you'd define and save a Cat as follows:
+Other document object mapping solutions force you to extend on their object model. 
+Using Mongoose, for example, you'd define and save a Cat as follows:
 
-    var Cat = mongoose.model('Cat', { name: String }); // replace your existing POJO
+    var Cat = mongoose.model('Cat', { name: String }); // instead of your existing POJO
 
     var kitty = new Cat({ name: 'Zildjian' });
     kitty.save(function (err) {                        // async save method
