@@ -2,7 +2,7 @@ body {
   position: relative; /* For scrollyspy */
   padding-top: 50px; /* Account for fixed navbar */
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  background-image:url('assets/images/Polyhedron.png');
+  background-image:url('http://marfarma.github.io/angular-pouch-model/docs/assets/images/Polyhedron.png');
   background-color:#ffffff;
   /*font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; */
 }
