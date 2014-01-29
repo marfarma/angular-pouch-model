@@ -2,6 +2,8 @@ body {
   position: relative; /* For scrollyspy */
   padding-top: 50px; /* Account for fixed navbar */
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  background-image:url('assets/images/Polyhedron.png');
+  background-color:#ffffff;
   /*font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; */
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
