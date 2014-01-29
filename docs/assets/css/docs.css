@@ -15,10 +15,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 /* Page headers */
 .bf-header {
-  padding: 30px 30px 40px;
+  padding: 30px 30px 0px;
   font-size: 16px;
   color: #5a5a5a;
   text-align: center;
+  margin-bottom: 40px;
   border-bottom: 1px solid #e5e5e5;
 }
 .bf-header p {
