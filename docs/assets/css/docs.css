@@ -20,7 +20,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #5a5a5a;
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-  background-image:url('http://marfarma.github.io/angular-pouch-model/docs/assets/images/leonardo_polyhedra_clipped_rev_3_light.png');
 }
 .bf-header p {
   font-weight: 300;
@@ -30,7 +29,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .bf-header .container {
   position: relative;
 }
-
+.container .page-heading {
+    background-image:url('http://marfarma.github.io/angular-pouch-model/docs/assets/images/leonardo_polyhedra_clipped_rev_3_light.png');
+}
 .bf-docs-section + .bf-docs-section {
   padding-top: 20px;
 }
